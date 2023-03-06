@@ -1,0 +1,40 @@
+/* do the code for multiple inheritance
+declare one interface-> P1 , one fn-> void show() that will print "default fn in interface1"
+declare second interface-> P2-> one fn-> void show() that will print ""default fn in inetrface2"
+declare class ->"Multiple" that implement P1 and P2
+declare one fn-> void show()= " default fn in class"
+that call both fn of P1 and P2*/
+interface P1 
+{
+    default void show() 
+	{
+        System.out.println("Default function in interface 1");
+    }
+}
+
+interface P2 
+{
+    default void show()
+	{
+        System.out.println("Default function in interface 2");
+    }
+}
+
+class Multiple implements P1, P2 
+{
+    public void show() 
+	{
+        P1.super.show(); // call the default show() method in interface P1
+        P2.super.show(); // call the default show() method in interface P2
+        System.out.println("Default function in class");
+    }
+}
+
+class multiple_implements 
+{
+    public static void main(String[] args) 
+	{
+        Multiple obj = new Multiple();
+        obj.show(); // calling the show() method of Multiple class
+    }
+}
