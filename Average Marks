@@ -1,0 +1,49 @@
+import java.util.*;
+
+public class AverageMarks {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Input marks array
+        int n = sc.nextInt();
+        double[][] marks = new double[n][3];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < 3; j++) {
+                marks[i][j] = sc.nextDouble();
+            }
+        }
+
+        // Compute average marks of best 2 academic tasks
+        double[] avgMarks = average_marks(marks);
+
+        // Print results
+        for (int i = 0; i < n; i++) {
+            System.out.print(avgMarks[i] + " ");
+        }
+    }
+
+    public static double[] average_marks(double[][] marks) {
+        int n = marks.length;
+        double[] avgMarks = new double[n];
+
+        for (int i = 0; i < n; i++) {
+            double sum = 0;
+            double max1 = 0;
+            double max2 = 0;
+
+            for (int j = 0; j < 3; j++) {
+                sum += marks[i][j];
+                if (marks[i][j] > max1) {
+                    max2 = max1;
+                    max1 = marks[i][j];
+                } else if (marks[i][j] > max2) {
+                    max2 = marks[i][j];
+                }
+            }
+
+            avgMarks[i] = (max1 + max2) / 2;
+        }
+
+        return avgMarks;
+    }
+}
