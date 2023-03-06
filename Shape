@@ -1,0 +1,35 @@
+abstract class Shape {
+    public abstract void RectangleArea(double length, double breadth);
+    public abstract void SquareArea(double side);
+    public abstract void CircleArea(double radius);
+}
+
+class Area extends Shape {
+    @Override
+    public void RectangleArea(double length, double breadth) {
+        double area = length * breadth;
+        System.out.println("Area of rectangle is: " + area);
+    }
+
+    @Override
+    public void SquareArea(double side) {
+        double area = side * side;
+        System.out.println("Area of square is: " + area);
+    }
+
+    @Override
+    public void CircleArea(double radius) {
+        double area = Math.PI * radius * radius;
+        System.out.println("Area of circle is: " + area);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Area obj = new Area();
+
+        obj.RectangleArea(5.0, 3.0);
+        obj.SquareArea(4.0);
+        obj.CircleArea(2.5);
+    }
+}
